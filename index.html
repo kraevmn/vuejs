@@ -11,9 +11,10 @@
 
 <body>
     <div class="" id="app">
-        <ul>
-            <li v-for="person in people" :class="{'strike':!person.stillAlive}">{{person.name}}</li>
-        </ul>
+        <h2>{{counter}}</h2>
+        <button v-on:click="counter++">+1</button>
+        <button v-on:click="substract">-1</button>
+        <button @dblclick="counter=0">Reset</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="/app.js"></script>

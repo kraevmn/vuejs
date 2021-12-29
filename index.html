@@ -11,10 +11,15 @@
 
 <body>
     <div class="" id="app">
-        <h2>{{counter}}</h2>
-        <button v-on:click="counter++">+1</button>
-        <button v-on:click="substract">-1</button>
-        <button @dblclick="counter=0">Reset</button>
+        <input type="text" @keyup.enter="addTask" v-model="currentTask">
+        <ul>
+            <li v-for="task in tasks" :class="{'strike': task.isComplited}">
+                <input type="text" v-if="task.isEditing" @keyup.enter="editTask(task.text)" v-model="editValue">
+                <span v-else @click="task.isComplited = !task.isComplited">{{task.text}}</span>
+                <button @click=changeEditing(task.text)>*</button>
+                <button @click=removeTask(task.text)>X</button>
+            </li>
+        </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="/app.js"></script>
